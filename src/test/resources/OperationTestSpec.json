@@ -1,0 +1,19 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "occupation": {
+            "Doctor": {
+              "#Surgeon": "lead.contact.occupation"
+            },
+            "Driver": {
+              "#Taxi": "lead.contact.occupation"
+            }
+          }
+        }
+      }
+    }
+  }
+]

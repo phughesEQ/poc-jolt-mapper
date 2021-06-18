@@ -1,0 +1,19 @@
+{
+  "job_code": "ExampleSpec",
+  "lead_data": {
+    "current_policy": {
+      "street_address": "123 adga",
+      "occupation": "Doctor",
+      "drivers": [
+        {
+          "first_name": "Homer",
+          "last_name": "Simpson",
+          "birth_date": "1998-03-02",
+          "city": "Schenectady",
+          "postal_state": "NY",
+          "zip_code": "12345"
+        }
+      ]
+    }
+  }
+}

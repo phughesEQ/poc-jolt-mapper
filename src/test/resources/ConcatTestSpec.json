@@ -1,0 +1,30 @@
+[
+  {
+    "operation": "modify-default-beta",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "drivers": {
+            "*": {
+              "full_name": "=concat(@(1,first_name),' ',@(1,last_name))"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "drivers": {
+            "0": {
+              "full_name": "lead.contact.fullName"
+            }
+          }
+        }
+      }
+    }
+  }
+]

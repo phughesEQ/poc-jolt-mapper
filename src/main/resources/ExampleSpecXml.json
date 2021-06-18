@@ -1,0 +1,49 @@
+[
+  {
+    "operation": "modify-default-beta",
+    "responseType": "xml",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "drivers": {
+            "*": {
+              "full_name": "=concat(@(1,first_name),' ',@(1,last_name))"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "street_address": "lead.contact.addressLine1",
+          "EQ_arrival": "EQ_arrival",
+          "occupation": {
+            "Doctor": {
+              "#Surgeon": "lead.contact.occupation"
+            },
+            "Driver": {
+              "#Taxi": "lead.contact.occupation"
+            }
+          },
+          "drivers": {
+            "0": {
+              "full_name": "lead.contact.fullName",
+              "city": "lead.contact.city",
+              "postal_state": "lead.contact.state"
+            }
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "sort",
+    "spec": {
+      "*": ""
+    }
+  }
+]

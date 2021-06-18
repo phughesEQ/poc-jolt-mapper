@@ -1,0 +1,19 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "lead_data": {
+        "current_policy": {
+          "street_address": "lead.contact.addressLine1",
+          "drivers": {
+            "0": {
+              "full_name": "lead.contact.fullName",
+              "city": "lead.contact.city",
+              "postal_state": "lead.contact.state"
+            }
+          }
+        }
+      }
+    }
+  }
+]
