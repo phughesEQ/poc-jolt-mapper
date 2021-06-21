@@ -5,16 +5,6 @@ import org.http4k.server.Undertow
 import org.http4k.server.asServer
 import org.http4k.routing.routes
 
-//class Main() {
-//
-////     constructor() : this() {
-////        routes(api())
-////            .withFilter(ServerFilters.Cors(CorsPolicy.UnsafeGlobalPermissive))
-////            .asServer(Undertow(9000))
-////            .start()
-////    }
-//
-//}
 
 fun main() {
     routes(api())

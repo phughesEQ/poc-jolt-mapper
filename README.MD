@@ -53,7 +53,7 @@ postman.
             "first_name": "Homer",
             "last_name": "Simpson",
             "city": "Schenectady",
-            "postal_state": "NY",
+            "postal_state": "NY"
           }
         ]
       }
