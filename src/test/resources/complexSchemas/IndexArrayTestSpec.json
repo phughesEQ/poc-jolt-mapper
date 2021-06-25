@@ -1,0 +1,30 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "autos": {
+        "*": {
+          "$": "autos.[&1].ref_index",
+          "*": "autos.[&1].&"
+        }
+      },
+      "drivers": {
+        "*": {
+          "$": "drivers.[&1].ref_index",
+          "*": "drivers.[&1].&"
+        }
+      }
+    }
+  },
+  {
+    "operation": "modify-overwrite-beta",
+    "spec": {
+      "autos|drivers": {
+        "*": {
+          "ref_index": "=intSum(1,@(1,ref_index))"
+        }
+      }
+    }
+  }
+]
+

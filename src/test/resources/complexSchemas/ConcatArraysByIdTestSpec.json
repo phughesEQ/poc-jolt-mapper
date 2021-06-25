@@ -1,0 +1,60 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "drivers": {
+        "*": {
+          "ordinal": "drivers[&1].ordinal",
+          "ref_index": "drivers[&1].driver_ref",
+          "first_name": "drivers[&1].firstName"
+        }
+      },
+      "autos": {
+        "*": {
+          "driver_ordinal": "autos[&1].ordinal",
+          "ref_index": "autos[&1].ref_index",
+          "make": "autos[&1].make",
+          "autoType": "autos[&1].autoType"
+        }
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": {
+        "*": {
+          "*": "@(1,ordinal).&"
+        }
+      }
+    }
+  },
+  {
+    "operation": "cardinality",
+    "spec": {
+      "*": {
+        "ordinal": "ONE"
+      }
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "*": "drivers"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "drivers": {
+        "*": {
+          "ordinal": ["drivers[&1].ordinal", "autos[&1].ordinal"],
+          "driver_ref": ["drivers[&1].ref_index", "autos[&1].driver_index"],
+          "ref_index": ["drivers[&1].auto_index", "autos[&1].ref_index"],
+          "firstName": "drivers[&1].firstName",
+          "make": "autos[&1].make"
+        }
+      }
+    }
+  }
+]

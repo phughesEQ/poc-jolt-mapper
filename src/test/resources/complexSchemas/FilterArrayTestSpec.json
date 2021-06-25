@@ -1,0 +1,48 @@
+[
+  {
+    "operation": "shift",
+    "spec": {
+      "drivers": {
+        "0": {
+          "ordinal": ["primaryDriver.[&1].ordinal", "drivers.ordinal"],
+          "ref_index": ["primaryDriver.[&1].ref_index", "drivers.ref_index"],
+          "first_name": ["primaryDriver.[&1].first_name", "drivers.first_name"]
+        },
+        "*": "drivers"
+      },
+      "*": "&"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "drivers|autos": {
+        "*": {
+          "type": {
+            "*": {
+              "@2": "&1"
+            }
+          }
+        }
+      },
+      "*": "&"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "Primary": {
+        "*": "primaryDriver.&"
+      },
+      "primaryDriver": "&"
+    }
+  },
+  {
+    "operation": "shift",
+    "spec": {
+      "primaryDriver": {
+        "0": "primaryDriver"
+      }
+    }
+  }
+]
