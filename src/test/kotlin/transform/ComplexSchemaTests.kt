@@ -240,4 +240,54 @@ class ComplexSchemaTests {
         assertEquals(expectedOutput, output)
     }
 
+    // Link: https://github.com/adharmonics/pong/blob/d1b0b970230db7f68597ac73a72b5502c42200fd/lib/driver_auto_matcher.rb#L97
+    @Test
+    fun `Identify Primary Driver when primary type is not set - Input is correctly mapped when filter array is applied`() {
+        val spec: List<Any> = JsonUtils.classpathToList("$basePath/FilterArrayTestSpec.json")
+
+        val input = """
+           {
+              "drivers": [
+                {
+                  "ordinal": "1",
+                  "ref_index": 111,
+                  "first_name": "John"
+                },
+                {
+                  "ordinal": "2",
+                  "ref_index": 222,
+                  "first_name": "David",
+                  "type": "Secondary"
+                }
+              ],
+              "autos": [
+                {
+                  "driver_ordinal": "2",
+                  "ref_index": 333,
+                  "make": "Ford"
+                },
+                {
+                  "driver_ordinal": "1",
+                  "ref_index": 444,
+                  "make": "Tesla"
+                }
+              ]
+            }
+        """.trimIndent()
+
+        val expectedOutput = """
+          {
+            "primaryDriver" : {
+              "ordinal" : "1",
+              "ref_index" : 111,
+              "first_name" : "John"
+            }
+          }
+        """.trimIndent()
+
+        val output = transformJson(input, spec)
+
+        assertEquals(expectedOutput, output)
+    }
+
 }
