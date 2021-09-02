@@ -15,11 +15,10 @@ fun getJsonTransformation(jobCode: String, input: String): Response {
     return jsonTo(schema.responseType, json)
 }
 
-// * These would have catchable exceptions
-// * Would become a S3 bucket read instead of file class
 fun getSchemaFrom(jobCode: String): Schema {
     val spec: List<Any> = JsonUtils.classpathToList("/$jobCode.json")
 
+    // This would be replaced with a read from S3
     val responseType: String = JSONObject(JsonUtils.toPrettyJsonString(spec[0])).getString("responseType")
         ?: ResponseType.JSON.name
 

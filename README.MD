@@ -40,10 +40,9 @@ postman.
 **Example Json Transformation Request**
 ```json
 {
-  "url": "http://localhost:9000/api/transformJson",
+  "url": "http://localhost:9000/api/transformJson/ExampleSpec",
   "method": "POST",
   "body": {
-    "job_code": "ExampleSpec",
     "lead_data": {
       "current_policy": {
         "street_address": "123 adga",
@@ -79,6 +78,8 @@ postman.
   }
 }
 ```
+
+More complex examples of transformations can be found in `src/test/kotlin/transform/ComplexSchemaTests.kt`
 
 ## Running Kubernetes Locally
 
