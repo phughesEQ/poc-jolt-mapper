@@ -16,9 +16,9 @@ fun getJsonTransformation(jobCode: String, input: String): Response {
 }
 
 fun getSchemaFrom(jobCode: String): Schema {
+    // This would be replaced with a read from S3
     val spec: List<Any> = JsonUtils.classpathToList("/$jobCode.json")
 
-    // This would be replaced with a read from S3
     val responseType: String = JSONObject(JsonUtils.toPrettyJsonString(spec[0])).getString("responseType")
         ?: ResponseType.JSON.name
 
