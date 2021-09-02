@@ -16,11 +16,11 @@ class JoltTransformationsTest {
 
     @Test
     fun `Schema should read correct file from job code`() {
-        val specName = "TestSpec"
+        val jobCode = "TestSpec"
         val expectedResponseType = "json"
 
-        val expectedSpec = JsonUtils.classpathToList("/$specName.json").toString()
-        val schema: Schema = getSchemaFrom("""{"job_code": "$specName"}""")
+        val expectedSpec = JsonUtils.classpathToList("/$jobCode.json").toString()
+        val schema: Schema = getSchemaFrom(jobCode)
 
         assertEquals(expectedSpec, schema.spec.toString())
         assertEquals(expectedResponseType, schema.responseType)
@@ -104,7 +104,7 @@ class JoltTransformationsTest {
             }
         """.trimIndent()
 
-        val response = getJsonTransformation(input)
+        val response = getJsonTransformation("ExampleSpec", input)
 
         assertEquals(expectedStatus, response.status)
         assertEquals(expectedHeader, response.header("Content-Type"))

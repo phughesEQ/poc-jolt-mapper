@@ -4,23 +4,24 @@ import com.bazaarvoice.jolt.Chainr
 import com.bazaarvoice.jolt.JsonUtils
 import org.http4k.core.Response
 import org.json.JSONObject
+import types.ResponseType
 import types.Schema
 
-fun getJsonTransformation(input: String): Response {
-    val schema: Schema = getSchemaFrom(input)
+fun getJsonTransformation(jobCode: String, input: String): Response {
+    val schema: Schema = getSchemaFrom(jobCode)
 
     val json: String = transformJson(input, schema.spec)
 
     return jsonTo(schema.responseType, json)
 }
 
-//TODO: These would have catchable exceptions
-fun getSchemaFrom(input: String): Schema {
-    val specName: String = JSONObject(input).getString("job_code") ?: ""
+// * These would have catchable exceptions
+// * Would become a S3 bucket read instead of file class
+fun getSchemaFrom(jobCode: String): Schema {
+    val spec: List<Any> = JsonUtils.classpathToList("/$jobCode.json")
 
-    val spec: List<Any> = JsonUtils.classpathToList("/$specName.json") //TODO: This would become an S3 bucket read
-
-    val responseType: String = JSONObject(JsonUtils.toPrettyJsonString(spec[0])).getString("responseType") ?: ""
+    val responseType: String = JSONObject(JsonUtils.toPrettyJsonString(spec[0])).getString("responseType")
+        ?: ResponseType.JSON.name
 
     return Schema(spec, responseType)
 }
